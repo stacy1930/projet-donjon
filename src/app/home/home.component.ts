@@ -13,12 +13,19 @@ export class HomeComponent implements OnInit {
   public testLogin: any;
 
   constructor(private apiService: ApiService) { }
+  data: any;
 
   ngOnInit(): void {
+    // this.login = this.apiService.getTest('eee');
+    // //this.testLogin = this.apiService.getLogin('eee');
+    // console.log(this.login)
+    this.login = this.apiService.getAccueil().pipe(tap(e => console.log(e)));
 
-    this.login = this.apiService.getTest('eee');
-    //this.testLogin = this.apiService.getLogin('eee');
-    console.log(this.login)
+    this.login.subscribe((e: any) => {
+      this.data = e;
+    });
+
+    console.warn();
 
   }
 

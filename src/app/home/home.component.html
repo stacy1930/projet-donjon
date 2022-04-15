@@ -2,3 +2,9 @@
 
 <br />
 
+<div *ngIf="data">
+    {{data.presentation}}
+    <ul *ngFor="let carte of data.carte">
+        <li>{{carte}} </li>
+    </ul>
+</div>
