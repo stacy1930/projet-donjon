@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { ApiService } from '../API/api.service';
 
 @Component({
   selector: 'app-coffre',
@@ -7,9 +8,17 @@ import { Component, OnInit } from '@angular/core';
 })
 export class CoffreComponent implements OnInit {
 
-  constructor() { }
+  public data: any;
+  public coffre: any;
+  constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
+
+    this.coffre = this.apiService.getCoffre(localStorage.getItem('Authorization')).subscribe(data => {
+      console.log(data);
+      this.data = data;
+    }
+    );
   }
 
 }

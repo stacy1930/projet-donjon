@@ -1,0 +1,17 @@
+<!-- <div class="toto"> -->
+<div *ngIf="data" class="toto">
+    <mat-card class="example-card">
+        <mat-card-content style="text-align: center;">
+            <h1>Afin de continuer l'aventure tu dois résoudre mon énigme :</h1>
+
+            <p>
+                {{data.body}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button class="btn btn-inscription" routerLink="/accueil-second-etage">Retour à l'entrée du 2ème
+                étage</button>
+
+        </mat-card-actions>
+    </mat-card>
+</div>

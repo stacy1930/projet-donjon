@@ -35,6 +35,9 @@ export class HomeComponent implements OnInit {
 
       //@ts-ignore
       localStorage.setItem('Authorization', res.headers.get('X-Subject-Token'))
+      //@ts-ignore
+      console.log(res.headers.get('X-Subject-Token'));
+
 
     }
     );
@@ -42,14 +45,12 @@ export class HomeComponent implements OnInit {
 
   etage() {
     this.escalier = this.apiService.getEscalier(localStorage.getItem('Authorization')).subscribe(data => {
-
       console.log(data)
-
     }
     );
   }
 
-  coffref(){
+  coffref() {
     this.coffre = this.apiService.getCoffre(localStorage.getItem('Authorization')).subscribe(data => {
 
       console.log(data)
@@ -58,7 +59,7 @@ export class HomeComponent implements OnInit {
     );
   }
 
-  tresor(){
+  tresor() {
     this.tresort = this.apiService.getTresor(localStorage.getItem('Authorization')).subscribe(data => {
 
       console.log(data)
