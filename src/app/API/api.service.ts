@@ -10,7 +10,7 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-  apiBook = 'https://cors-anywhere.herokuapp.com/141.95.153.155';
+  apiBook = 'https://cors-proxy-any.herokuapp.com/141.95.153.155';
   auth: string = 'grgge';
 
 
@@ -32,14 +32,14 @@ export class ApiService {
 
 
   getTest(auth: any){
-   
-    this.auth = auth
-    return fetch(this.apiBook, { method: 'GET', mode: 'cors', headers: this.myheader }).then(res => res.json()).then(res => { console.warn(res); return res });
+    return this.http.get<any>(`${this.apiBook}`).subscribe(data => {
+      console.log(data)
+    });
     //return this.http.get(`${this.apiBook}/inscription`, this.httpOptions);
   }
 
   /*getLogin(auth: any){
-   
+
     this.auth = auth
     return fetch(this.apiBook + '/inscription', { method: 'GET', mode: 'cors', headers: this.myheader }).then(res => res.json()).then(res => { console.warn(res); return res });
     //return this.http.get(`${this.apiBook}/inscription`, this.httpOptions);

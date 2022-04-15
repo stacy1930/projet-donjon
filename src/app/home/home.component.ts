@@ -18,7 +18,7 @@ export class HomeComponent implements OnInit {
 
     this.login = this.apiService.getTest('eee');
     //this.testLogin = this.apiService.getLogin('eee');
-      console.log(this.testLogin)
+    console.log(this.login)
 
   }
 
