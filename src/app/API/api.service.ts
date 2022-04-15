@@ -42,52 +42,72 @@ export class ApiService {
   }
 
   getCoffre() {
-    return this.http.get<any>(`${this.apiBook}/coffre`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/coffre`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getTresor() {
-    return this.http.get<any>(`${this.apiBook}/1`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/1`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getInformationJoueur() {
-    return this.http.get<any>(`${this.apiBook}/reset`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getAccueil2Etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getInscription2Etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/inscription`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getReset2Etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/reset`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getCouloir2etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/couloir`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/couloir`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getTresorCouloir2Etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/couloir/1`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/couloir/1`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getNoteIndice2Etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/note`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/note`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getVieux2Etage() {
-    return this.http.get<any>(`${this.apiBook}:8000/vieux`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/vieux`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   postVieuxTresor2Etage(reponse: any) {
-    return this.http.post<any>(`${this.apiBook}:8000/vieux`, reponse);
+    //@ts-ignore
+    return this.http.post<any>(`${this.apiBook}:8000/vieux`, reponse, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getAccueil3Etage() {
-    return this.http.get<any>(`${this.apiBook}:7259/`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:7259/`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getInscription3Etage() {
-    return this.http.get<any>(`${this.apiBook}:7259/inscription`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:7259/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getDragon3Etage() {
-    return this.http.get<any>(`${this.apiBook}:7259/dragon`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:7259/dragon`), { headers: this.myheader, responseType: "text", observe: 'response' };
   }
   deleteDragon3Etage() {
-    return this.http.delete<any>(`${this.apiBook}:7259/dragon`);
+    //@ts-ignore
+    return this.http.delete<any>(`${this.apiBook}:7259/dragon`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
   getReset3Etage() {
-    return this.http.get<any>(`${this.apiBook}:7259/reset`);
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:7259/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
+  }
+  getEscalier() {
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/escalier`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
 
 
