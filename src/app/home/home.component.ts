@@ -15,7 +15,7 @@ export class HomeComponent implements OnInit {
 
   ngOnInit(): void {
 
-    this.allRoles$ = this.apiService.getTest().subscribe((data:any) => { console.log(data)});
+    this.allRoles$ = this.apiService.getTest('eee').subscribe((data: any) => { console.log(data) });
 
   }
 
