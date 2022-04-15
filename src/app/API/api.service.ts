@@ -10,31 +10,39 @@ import { Observable } from 'rxjs';
 
 export class ApiService {
 
-  apiBook = 'http://localhost:4200/api';
+  apiBook = 'https://cors-anywhere.herokuapp.com/141.95.153.155';
   auth: string = 'grgge';
 
 
   constructor(private http: HttpClient) { }
 
-  headers = new HttpHeaders({ 'Content-Type': 'application/json' });
+  //headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  httpOptions = {
-    headers: new HttpHeaders({
-      'Content-Type': 'application/json',
-      // 'Access-Control-Allow-Origin': 'http://141.95.153.155/',
-      'Authorization': `Basic ${this.auth}`,
-      'Access-Control-Allow-Headers': 'Content-Type',
-      'Access-Control-Allow-Origin': '*',
-      'Access-Control-Allow-Methods': 'POST, GET',
-      'X-Requested-With': 'XMLHttpRequest',
-      responseType: "json",
-    }),
-  };
+  myheader = new Headers({
+    'Content-Type': 'multipart/form-data',
+    // 'Access-Control-Allow-Origin': 'http://141.95.153.155/',
+    'Authorization': `Basic ${this.auth}`,
+    'Access-Control-Allow-Headers': 'Content-Type',
+    'Access-Control-Allow-Origin': '',
+    'Access-Control-Allow-Methods': 'POST, GET',
+    'X-Requested-With': 'XMLHttpRequest',
+    "Accept": "/*",
+    responseType: "text",
+  });
 
-  getTest(auth: any): Observable<any> {
+
+  getTest(auth: any){
+   
     this.auth = auth
-
-    return this.http.get(`${this.apiBook}/inscription`, this.httpOptions);
-    // return this.http.get(rr);
+    return fetch(this.apiBook, { method: 'GET', mode: 'cors', headers: this.myheader }).then(res => res.json()).then(res => { console.warn(res); return res });
+    //return this.http.get(`${this.apiBook}/inscription`, this.httpOptions);
   }
+
+  /*getLogin(auth: any){
+   
+    this.auth = auth
+    return fetch(this.apiBook + '/inscription', { method: 'GET', mode: 'cors', headers: this.myheader }).then(res => res.json()).then(res => { console.warn(res); return res });
+    //return this.http.get(`${this.apiBook}/inscription`, this.httpOptions);
+  }*/
+
 }

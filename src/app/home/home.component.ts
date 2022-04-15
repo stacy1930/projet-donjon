@@ -9,13 +9,16 @@ import { ApiService } from '../API/api.service';
 })
 export class HomeComponent implements OnInit {
 
-  public allRoles$: any;
+  public login: any;
+  public testLogin: any;
 
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
 
-    this.allRoles$ = this.apiService.getTest('eee').subscribe((data: any) => { console.log(data) });
+    this.login = this.apiService.getTest('eee');
+    //this.testLogin = this.apiService.getLogin('eee');
+      console.log(this.testLogin)
 
   }
 
