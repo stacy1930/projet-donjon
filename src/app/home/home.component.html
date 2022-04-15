@@ -1,10 +1,12 @@
-<p>login works!</p>
-
-<br />
-
 <div *ngIf="data">
     {{data.presentation}}
     <ul *ngFor="let carte of data.carte">
         <li>{{carte}} </li>
     </ul>
+
+
+    <button (click)="inscription()">insc</button>
+    <button (click)="etage()">test</button>
+    <button (click)="coffref()">coffre</button>
+    <button (click)="tresor()">tresor</button>
 </div>

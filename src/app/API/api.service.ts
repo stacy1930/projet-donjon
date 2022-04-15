@@ -11,44 +11,55 @@ import { Observable } from 'rxjs';
 export class ApiService {
 
   apiBook = 'https://cors-proxy-any.herokuapp.com/141.95.153.155';
-  auth: string = 'grgge';
+  auth: string = btoa('testtest:1234');
 
 
   constructor(private http: HttpClient) { }
 
   //headers = new HttpHeaders({ 'Content-Type': 'application/json' });
 
-  myheader = new Headers({
+  myheader = new HttpHeaders({
     'Content-Type': 'multipart/form-data',
-    // 'Access-Control-Allow-Origin': 'http://141.95.153.155/',
     'Authorization': `Basic ${this.auth}`,
     'Access-Control-Allow-Headers': 'Content-Type',
-    'Access-Control-Allow-Origin': '',
-    'Access-Control-Allow-Methods': 'POST, GET',
-    'X-Requested-With': 'XMLHttpRequest',
-    "Accept": "/*",
-    responseType: "text",
   });
 
-
-  getTest(auth: any) {
-    return this.http.get<any>(`${this.apiBook}`).subscribe(data => {
-      console.log(data)
+  getToken(token:any){
+    const myheaderToken = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Access-Control-Allow-Headers': 'Content-Type',
+      'x-auth-token': token
     });
+
+    return myheaderToken
   }
 
   getAccueil() {
     return this.http.get<any>(`${this.apiBook}/`);
   }
 
-  getCoffre() {
-    //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}/coffre`, { headers: this.myheader, responseType: "text", observe: 'response' });
+
+  getInscription(){
+   //@ts-ignore
+   return this.http.get<any>(`${this.apiBook}/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
-  getTresor() {
+
+  getEscalier(token:any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}/1`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}/escalier`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
+
+  getCoffre(token:any) {
+
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/coffre`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
+  }
+  getTresor(token:any) {
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/1`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
+  }
+
+
   getInformationJoueur() {
     //@ts-ignore
     return this.http.get<any>(`${this.apiBook}/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
@@ -105,10 +116,7 @@ export class ApiService {
     //@ts-ignore
     return this.http.get<any>(`${this.apiBook}:7259/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
-  getEscalier() {
-    //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}/escalier`, { headers: this.myheader, responseType: "text", observe: 'response' });
-  }
+  
 
 
   /*getLogin(auth: any){
