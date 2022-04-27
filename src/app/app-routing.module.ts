@@ -1,6 +1,7 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
 import { CoffreComponent } from './coffre/coffre.component';
+import { CouloirComponent } from './couloir/couloir.component';
 import { EscalierFirstComponent } from './escalier-first/escalier-first.component';
 import { EtageDeuxAccueilComponent } from './etage-deux-accueil/etage-deux-accueil.component';
 import { HomeComponent } from './home/home.component';
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'tresor/1', component: TresorUnComponent },
   { path: 'vieux', component: VieuxComponent },
   { path: 'note', component: NoteComponent },
+  { path: 'couloir-second-etage', component: CouloirComponent },
   { path: '**', redirectTo: 'home' },
 
 

@@ -12,10 +12,14 @@
             </ul>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button class="btn btn-inscription" (click)="inscription()">Inscrivez-vous</button>
+            <button mat-button class="btn btn-inscription" (click)="openDialogInscription()">Inscrivez-vous !</button>
             <button mat-button class="btn btn-inscription" routerLink="/vieux">Parler au vieux</button>
             <button mat-button class="btn btn-inscription" routerLink="/note">Lire la note</button>
+            <button mat-button class="btn btn-inscription" routerLink="/couloir-second-etage">Aller voir le
+                couloir</button>
             <button mat-button class="btn btn-inscription" routerLink="/home">Retourner au rez-de-chaussé</button>
+            <button mat-button class="btn btn-inscription" (click)="openDialogReset()">Informations</button>
+
             <!-- <button mat-button class="btn btn-inscription" (click)="inscription()">Inscrivez-vous</button>
             <button mat-button class="btn btn-inscription" routerLink="/second-etage">Escalier</button>
             <button mat-button class="btn btn-inscription" (click)="coffref()">Coffre</button>

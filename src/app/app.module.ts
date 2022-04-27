@@ -8,6 +8,7 @@ import { HttpClientModule } from '@angular/common/http';
 import { CoffreComponent } from './coffre/coffre.component';
 import { MatCardModule } from '@angular/material/card';
 import { MatButtonModule } from '@angular/material/button';
+import { MatDialogModule } from '@angular/material/dialog';
 import { InscriptionComponent } from './inscription/inscription.component';
 import { MatTooltipModule } from '@angular/material/tooltip';
 import { EtageDeuxAccueilComponent } from './etage-deux-accueil/etage-deux-accueil.component';
@@ -15,6 +16,13 @@ import { EscalierFirstComponent } from './escalier-first/escalier-first.componen
 import { TresorUnComponent } from './tresor-un/tresor-un.component';
 import { VieuxComponent } from './vieux/vieux.component';
 import { NoteComponent } from './note/note.component';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { MatFormFieldModule } from '@angular/material/form-field';
+
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { MatInputModule } from '@angular/material/input';
+import { ResetRdcComponent } from './reset-rdc/reset-rdc.component';
+import { CouloirComponent } from './couloir/couloir.component';
 
 
 @NgModule({
@@ -27,7 +35,9 @@ import { NoteComponent } from './note/note.component';
     EscalierFirstComponent,
     TresorUnComponent,
     VieuxComponent,
-    NoteComponent
+    NoteComponent,
+    ResetRdcComponent,
+    CouloirComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +45,13 @@ import { NoteComponent } from './note/note.component';
     HttpClientModule,
     MatCardModule,
     MatButtonModule,
-    MatTooltipModule
+    MatTooltipModule,
+    MatDialogModule,
+    BrowserAnimationsModule,
+    MatFormFieldModule,
+    FormsModule,
+    ReactiveFormsModule,
+    MatInputModule
   ],
   providers: [],
   bootstrap: [AppComponent]

@@ -10,15 +10,19 @@ export class CoffreComponent implements OnInit {
 
   public data: any;
   public coffre: any;
+
   constructor(private apiService: ApiService) { }
 
   ngOnInit(): void {
 
-    this.coffre = this.apiService.getCoffre(localStorage.getItem('Authorization')).subscribe(data => {
-      console.log(data);
-      this.data = data;
+    if (localStorage.getItem('Authorization')) {
+      this.coffre = this.apiService.getCoffre(localStorage.getItem('Authorization')).subscribe(data => {
+        console.log(data);
+        this.data = data;
+      }
+      );
     }
-    );
+
   }
 
 }

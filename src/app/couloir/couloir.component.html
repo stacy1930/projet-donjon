@@ -1,0 +1,22 @@
+<!-- <div class="toto"> -->
+<div *ngIf="data" class="toto">
+    <mat-card class="example-card">
+        <mat-card-content style="text-align: center;">
+            <h1>Vous parcourez le couloir</h1>
+            <p>
+                {{data.body}}
+            </p>
+            <h1>METTRE ICI UN INPUT POUR ACCEDER AU /1</h1>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button class="btn btn-inscription" routerLink="/accueil-second-etage">Retourner à l'entrée de
+                l'étage</button>
+            <!-- <button mat-button class="btn btn-inscription" (click)="openDialogReset()">Informations</button>  -->
+
+            <!-- <button mat-button class="btn btn-inscription" (click)="inscription()">Inscrivez-vous</button>
+            <button mat-button class="btn btn-inscription" routerLink="/second-etage">Escalier</button>
+            <button mat-button class="btn btn-inscription" (click)="coffref()">Coffre</button>
+            <button mat-button class="btn btn-inscription" (click)="tresor()">Porte 1</button> -->
+        </mat-card-actions>
+    </mat-card>
+</div>

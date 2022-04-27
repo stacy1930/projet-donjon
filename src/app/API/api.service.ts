@@ -39,9 +39,20 @@ export class ApiService {
   }
 
 
-  getInscription() {
+  // getInscription() {
+  //   //@ts-ignore
+  //   return this.http.get<any>(`${this.apiBook}/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
+  // }
+  getInscription(name: string, password: string) {
+
+    const authentication = btoa(`'${name}:${password}'`);
+    const headerInscription = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': `Basic ${authentication}`,
+      'Access-Control-Allow-Headers': 'Content-Type',
+    });
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}/inscription`, { headers: headerInscription, responseType: "text", observe: 'response' });
   }
 
   getEscalier(token: any) {
@@ -59,6 +70,20 @@ export class ApiService {
     return this.http.get<any>(`${this.apiBook}/1`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
 
+  getRouteCache(token: any) {
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/tresor`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
+  }
+  getRoute36(token: any) {
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/36`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
+  }
+
+  getResetRDC(token: any) {
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}/reset`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
+  }
+
 
   getInformationJoueur() {
     //@ts-ignore
@@ -69,17 +94,29 @@ export class ApiService {
     return this.http.get<any>(`${this.apiBook}:8000/`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
   }
 
-  getInscription2Etage() {
+  // getInscription2Etage() {
+  //   //@ts-ignore
+  //   return this.http.get<any>(`${this.apiBook}:8000/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
+  // }
+  getInscription2Etage(name: string, password: string) {
+
+    const authentication = btoa(`'${name}:${password}'`);
+    const headerInscription = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': `Basic ${authentication}`,
+      'Access-Control-Allow-Headers': 'Content-Type',
+    });
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:8000/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:8000/inscription`, { headers: headerInscription, responseType: "text", observe: 'response' });
   }
-  getReset2Etage() {
+
+  getReset2Etage(token: any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:8000/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:8000/reset`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
   }
-  getCouloir2etage() {
+  getCouloir2etage(token: any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:8000/couloir`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:8000/couloir`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
   getTresorCouloir2Etage() {
     //@ts-ignore

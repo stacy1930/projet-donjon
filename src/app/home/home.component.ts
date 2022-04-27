@@ -1,6 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
+import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable, tap } from 'rxjs';
 import { ApiService } from '../API/api.service';
+import { InscriptionComponent } from '../inscription/inscription.component';
+import { ResetRdcComponent } from '../reset-rdc/reset-rdc.component';
 
 @Component({
   selector: 'app-home',
@@ -15,8 +19,12 @@ export class HomeComponent implements OnInit {
   public escalier: any;
   public coffre: any;
   public tresort: any;
+  public auth: any;
 
-  constructor(private apiService: ApiService) { }
+  routeForm = this.formBuilder.group({
+    name: ['', Validators.required],
+  });
+  constructor(private apiService: ApiService, public dialog: MatDialog, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -30,17 +38,48 @@ export class HomeComponent implements OnInit {
     console.log(this.login)
   }
 
-  inscription() {
-    this.token = this.apiService.getInscription().subscribe(res => {
+  openDialogInscription() {
+    const dialogConfig = new MatDialogConfig();
 
-      //@ts-ignore
-      localStorage.setItem('Authorization', res.headers.get('X-Subject-Token'))
-      //@ts-ignore
-      console.log(res.headers.get('X-Subject-Token'));
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
 
+    const dialogRef = this.dialog.open(InscriptionComponent, dialogConfig);
 
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result : ${result}`);
+    })
+  }
+
+  openDialogReset() {
+    const dialogConfig = new MatDialogConfig();
+
+    dialogConfig.disableClose = false;
+    dialogConfig.autoFocus = true;
+
+    const dialogRef = this.dialog.open(ResetRdcComponent, dialogConfig);
+
+    dialogRef.afterClosed().subscribe(result => {
+      console.log(`Dialog result : ${result}`);
+    })
+  }
+
+  public routeTresor: any;
+  createRoute() {
+    if (this.routeForm.value.name === '/tresor') {
+      this.apiService.getRouteCache(localStorage.getItem('Authorization')).subscribe(data => {
+        //@ts-ignore
+        this.routeTresor = data.body;
+        alert(this.routeTresor);
+      })
     }
-    );
+    if (this.routeForm.value.name === '/36') {
+      this.apiService.getRoute36(localStorage.getItem('Authorization')).subscribe(data => {
+        //@ts-ignore
+        this.routeTresor = data.body;
+        alert(this.routeTresor);
+      })
+    }
   }
 
   etage() {
