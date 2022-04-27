@@ -1,4 +1,4 @@
-<div *ngIf="data">
+<!-- 
     {{data.presentation}}
     <ul *ngFor="let carte of data.carte">
         <li>{{carte}} </li>
@@ -9,4 +9,34 @@
     <button (click)="etage()">test</button>
     <button (click)="coffref()">coffre</button>
     <button (click)="tresor()">tresor</button>
+</div> -->
+
+<div *ngIf="data" class="toto">
+    <mat-card class="example-card">
+        <mat-card-content>
+            <h1 style="text-align: center;">Bienvenue sur notre Donjon</h1>
+            <p>
+                {{data.body}}
+            </p>
+        </mat-card-content>
+        <mat-card-actions>
+            <button mat-button class="btn btn-inscription" (click)="openDialogInscription()">Inscrivez-vous !</button>
+            <button mat-button class="btn btn-inscription" routerLink="/first-escalier">Escalier</button>
+            <!-- <button mat-button class="btn btn-inscription" (click)="etage()">Escalier</button> -->
+            <button mat-button class="btn btn-inscription" routerLink="/coffre">Coffre</button>
+            <button mat-button class="btn btn-inscription" routerLink="/tresor/1">Porte 1</button>
+            <button mat-button class="btn btn-inscription" (click)="openDialogReset()">Information sur la
+                partie</button>
+        </mat-card-actions>
+
+        <div>
+            <form [formGroup]="routeForm" (ngSubmit)="createRoute()">
+                <mat-form-field>
+                    <mat-label>Route</mat-label>
+                    <input matInput placeholder="Name" type="text" formControlName="name" required />
+                </mat-form-field>
+                <button mat-button class="btn btn-inscription">Vérifier la route</button>
+            </form>
+        </div>
+    </mat-card>
 </div>
