@@ -138,9 +138,21 @@ export class ApiService {
     //@ts-ignore
     return this.http.get<any>(`${this.apiBook}:7259/`, { headers: this.myheader, responseType: "text", observe: 'response' });
   }
-  getInscription3Etage() {
+  // getInscription3Etage() {
+  //   //@ts-ignore
+  //   return this.http.get<any>(`${this.apiBook}:7259/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
+  // }
+
+  getInscription3Etage(name: string, password: string) {
+
+    const authentication = btoa(`'${name}:${password}'`);
+    const headerInscription = new HttpHeaders({
+      'Content-Type': 'multipart/form-data',
+      'Authorization': `Basic ${authentication}`,
+      'Access-Control-Allow-Headers': 'Content-Type',
+    });
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:7259/inscription`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:7259/inscription`, { headers: headerInscription, responseType: "text", observe: 'response' });
   }
   getDragon3Etage() {
     //@ts-ignore

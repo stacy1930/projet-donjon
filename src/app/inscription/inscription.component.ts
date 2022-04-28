@@ -55,6 +55,18 @@ export class InscriptionComponent implements OnInit {
       );
     }
 
+    if (this.url === '/accueil-troisieme-etage') {
+      this.apiService.getInscription3Etage(this.loginForm.value.name, this.loginForm.value.password).subscribe(res => {
+        //@ts-ignore
+        localStorage.setItem('Authorization', res.headers.get('X-Subject-Token'))
+        //@ts-ignore
+        console.log(res.headers.get('X-Subject-Token'));
+        //@ts-ignore
+        this.dialogRef.close(res.headers.get('X-Subject-Token'));
+      }
+      );
+    }
+
   }
 
 }
