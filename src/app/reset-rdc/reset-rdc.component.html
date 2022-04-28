@@ -19,7 +19,21 @@
         <button mat-button mat-dialog-close>Cancel</button>
     </mat-dialog-actions>
 </div>
-<!-- body:
-name: "'s"
-retreived_tresors: (3) ['/tresor', '/36', '/1']
-start_time: "2022-04-26T12:10:11.180Z" -->
+
+<div *ngIf="!data" class="toto">
+    <mat-card class="example-card">
+        <mat-card-content style="text-align: center;">
+            <h1>ATTENTION</h1>
+            <p>
+                Il vous faut une clé pour rentrer. Mettre la clé dans la balise "x-auth-token"
+            </p>
+
+            <p>
+                Inscrivez-vous d'abord avant d'accéder aux infos du joueur
+            </p>
+        </mat-card-content>
+        <mat-card-actions  align="end">
+            <button mat-button mat-dialog-close>Cancel</button>
+        </mat-card-actions>
+    </mat-card>
+</div>

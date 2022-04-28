@@ -41,6 +41,15 @@ export class ResetRdcComponent implements OnInit {
       );
     }
 
+    if (this.url === '/accueil-troisieme-etage') {
+      this.information = this.apiService.getReset3Etage(localStorage.getItem('Authorization')).subscribe(data => {
+        console.log(data);
+        console.warn(this.url);
+        this.data = data;
+      }
+      );
+    }
+
   }
 
 }

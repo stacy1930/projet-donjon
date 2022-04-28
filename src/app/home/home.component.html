@@ -29,11 +29,11 @@
                 partie</button>
         </mat-card-actions>
 
-        <div>
-            <form [formGroup]="routeForm" (ngSubmit)="createRoute()">
+        <div >
+            <form [formGroup]="routeForm" (ngSubmit)="createRoute()" class="formRoute">
                 <mat-form-field>
                     <mat-label>Route</mat-label>
-                    <input matInput placeholder="Name" type="text" formControlName="name" required />
+                    <input matInput placeholder="Name" type="text" appearance="fill" formControlName="name" required />
                 </mat-form-field>
                 <button mat-button class="btn btn-inscription">Vérifier la route</button>
             </form>

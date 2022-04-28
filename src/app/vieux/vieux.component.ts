@@ -32,11 +32,14 @@ export class VieuxComponent implements OnInit {
   addResponse() {
     // if (localStorage.getItem('Authorization')) {
     if (this.vieuxForm.value.name === 'idempotent') {
-      this.apiService.postVieuxTresor2Etage(this.vieuxForm.value.name).subscribe(data => {
+      this.apiService.postVieuxTresor2Etage(this.vieuxForm.value.name, localStorage.getItem('Authorization')).subscribe(data => {
         //@ts-ignore
         this.routeTresor = data.body;
         console.log(this.routeTresor);
+        alert(this.routeTresor);
       })
+    }else{
+      alert("Faux !!! Essaie encore");
     }
     // }
     // else {

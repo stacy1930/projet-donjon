@@ -1,7 +1,7 @@
 <div *ngIf="data" class="toto">
     <mat-card class="example-card">
         <mat-card-content>
-            <h1 style="text-align: center;">Bienvenue sur le deuxième étage</h1>
+            <h1 style="text-align: center;">Bienvenue sur le troisième étage</h1>
             <p>
                 {{data.body.presentation}}
             </p>
@@ -9,17 +9,14 @@
                 <li>
                     {{route}}
                 </li>
-            </ul>
+            </ul> 
         </mat-card-content>
         <mat-card-actions>
+            
             <button mat-button class="btn btn-inscription" (click)="openDialogInscription()">Inscrivez-vous !</button>
-            <button mat-button class="btn btn-inscription" routerLink="/vieux">Parler au vieux</button>
-            <button mat-button class="btn btn-inscription" routerLink="/note">Lire la note</button>
-            <button mat-button class="btn btn-inscription" routerLink="/couloir-second-etage">Aller voir le
-                couloir</button>
-            <button mat-button class="btn btn-inscription" routerLink="/trois">Retourner au rez-de-chaussé</button>
-            <button mat-button class="btn btn-inscription" routerLink="/second-escalier">Prendre l'escalier</button>
             <button mat-button class="btn btn-inscription" (click)="openDialogReset()">Informations</button>
+            <button mat-button class="btn btn-inscription" routerLink="/accueil-second-etage">Retourner au 1er étage</button>
+            <button mat-button class="btn btn-inscription" routerLink="/dragon">Combattre le dragon</button>
 
             <!-- <button mat-button class="btn btn-inscription" (click)="inscription()">Inscrivez-vous</button>
             <button mat-button class="btn btn-inscription" routerLink="/second-etage">Escalier</button>

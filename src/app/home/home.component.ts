@@ -66,6 +66,7 @@ export class HomeComponent implements OnInit {
 
   public routeTresor: any;
   createRoute() {
+    if(localStorage.getItem('Authorization')){
     if (this.routeForm.value.name === '/tresor') {
       this.apiService.getRouteCache(localStorage.getItem('Authorization')).subscribe(data => {
         //@ts-ignore
@@ -79,6 +80,11 @@ export class HomeComponent implements OnInit {
         this.routeTresor = data.body;
         alert(this.routeTresor);
       })
+    }
+    if(this.routeForm.value.name != '/36' && this.routeForm.value.name != '/tresor'){
+      alert("Il n'y a rien ici");
+    }}else{
+      alert(`Il vous faut une clé pour rentrer. Mettre la clé dans la balise "x-auth-token"`);
     }
   }
 

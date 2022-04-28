@@ -23,6 +23,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatInputModule } from '@angular/material/input';
 import { ResetRdcComponent } from './reset-rdc/reset-rdc.component';
 import { CouloirComponent } from './couloir/couloir.component';
+import { EtageTroisAcceuilComponent } from './etage-trois-acceuil/etage-trois-acceuil.component';
+import { EscalierSecondComponent } from './escalier-second/escalier-second.component';
+import { DragonComponent } from './dragon/dragon.component';
 
 
 @NgModule({
@@ -37,7 +40,10 @@ import { CouloirComponent } from './couloir/couloir.component';
     VieuxComponent,
     NoteComponent,
     ResetRdcComponent,
-    CouloirComponent
+    CouloirComponent,
+    EtageTroisAcceuilComponent,
+    EscalierSecondComponent,
+    DragonComponent
   ],
   imports: [
     BrowserModule,

@@ -1,20 +1,18 @@
 <div *ngIf="data" class="toto">
     <mat-card class="example-card">
         <mat-card-content style="text-align: center;">
-            <h1>Voici l'énigme du coffre</h1>
+            <h1>Attention un dragon s'oppose à vous</h1>
             <p>
-                <strong>Question :</strong>
-                {{data.body.text}}
-            </p>
-            <p>
-                <strong>Message à déchiffrer : </strong>
-                {{data.body.message}}
+                
+                {{data.body}}
             </p>
 
-            <p *ngIf="ciffer"> <strong>Indice :</strong> {{ciffer}}  </p> 
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button class="btn btn-inscription" routerLink="/home">Retour à l'entrée du Donjon</button>
+            <button mat-button class="btn btn-inscription" (click)="wrong()">PUT</button>
+            <button mat-button class="btn btn-inscription" (click)="wrong()">POST</button>
+            <button mat-button class="btn btn-inscription" (click)="deleteDragon()">DELETE</button>
+            <button mat-button class="btn btn-inscription" routerLink="/accueil-troisieme-etage">Retour à létage</button>
 
         </mat-card-actions>
     </mat-card>
@@ -32,10 +30,8 @@
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button class="btn btn-inscription" routerLink="/home">Retour à l'entrée du Donjon</button>
+            <button mat-button class="btn btn-inscription" routerLink="/accueil-troisieme-etage">Retour à l'entrée de l'étage</button>
 
         </mat-card-actions>
     </mat-card>
 </div>
-
-<!--  -->
