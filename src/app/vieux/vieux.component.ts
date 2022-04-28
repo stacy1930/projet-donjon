@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../API/api.service';
 
 @Component({
@@ -10,7 +11,14 @@ export class VieuxComponent implements OnInit {
 
   public data: any;
   public vieux: any;
-  constructor(private apiService: ApiService) { }
+
+  vieuxForm = this.formBuilder.group({
+    name: ['', Validators.required],
+  });
+
+  public routeTresor: any;
+
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -19,6 +27,21 @@ export class VieuxComponent implements OnInit {
       this.data = data;
     }
     );
+  }
+
+  addResponse() {
+    // if (localStorage.getItem('Authorization')) {
+    if (this.vieuxForm.value.name === 'idempotent') {
+      this.apiService.postVieuxTresor2Etage(this.vieuxForm.value.name).subscribe(data => {
+        //@ts-ignore
+        this.routeTresor = data.body;
+        console.log(this.routeTresor);
+      })
+    }
+    // }
+    // else {
+    // console.log("Il vous faut une clé pour rentrer. Mettre la clé dans la balise");
+    // }
   }
 
 }

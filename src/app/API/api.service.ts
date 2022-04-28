@@ -118,9 +118,9 @@ export class ApiService {
     //@ts-ignore
     return this.http.get<any>(`${this.apiBook}:8000/couloir`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
-  getTresorCouloir2Etage() {
+  getTresorCouloir2Etage(token: any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:8000/couloir/1`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:8000/couloir/1`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
   getNoteIndice2Etage(token: any) {
     //@ts-ignore

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../API/api.service';
 
 @Component({
@@ -11,7 +12,13 @@ export class CouloirComponent implements OnInit {
   public couloir: any;
   public data: any;
 
-  constructor(private apiService: ApiService) { }
+  couloirForm = this.formBuilder.group({
+    name: ['', Validators.required],
+  });
+
+  couloir1Tresor: any;
+
+  constructor(private apiService: ApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.couloir = this.apiService.getCouloir2etage(localStorage.getItem('Authorization')).subscribe(data => {
@@ -19,6 +26,16 @@ export class CouloirComponent implements OnInit {
       this.data = data;
     }
     );
+  }
+
+  openCouloir() {
+    if (this.couloirForm.value.name === '/1') {
+      this.apiService.getTresorCouloir2Etage(localStorage.getItem('Authorization')).subscribe(data => {
+        //@ts-ignore
+        this.couloir1Tresor = data.body;
+        alert(this.couloir1Tresor);
+      })
+    }
   }
 
 }
