@@ -10,10 +10,28 @@
                 <strong>Message à déchiffrer : </strong>
                 {{data.body.message}}
             </p>
+            <!-- <ng-container *ngIf="ciffer">
+                <p> <strong>Indice :</strong> dans les headers il y a "cipher : {{ciffer}}" </p>
+
+
+            </ng-container> -->
+
             <ng-container *ngIf="ciffer">
-            <p> <strong>Indice :</strong> dans les headers il y a "cipher : {{ciffer}}" </p>
-           
-                
+                <table>
+
+                    <tbody>
+                        <tr>
+                            <th>Titre du Headers</th>
+                            <td *ngFor="let title of array2">{{title}}</td>
+                        </tr>
+                        <tr>
+                            <th>Valeur du headers</th>
+                            <td *ngFor="let content of array1">{{content}}</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+
             </ng-container>
         </mat-card-content>
         <mat-card-actions>
