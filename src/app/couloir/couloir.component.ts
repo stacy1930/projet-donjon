@@ -35,6 +35,8 @@ export class CouloirComponent implements OnInit {
         this.couloir1Tresor = data.body;
         alert(this.couloir1Tresor);
       })
+    }else{
+      alert("Il n'y a rien ici")
     }
   }
 
