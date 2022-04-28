@@ -9,17 +9,16 @@
                 {{data.body.question}}
             </p>
 
-            <!-- <h1>Réponse à l'énigme</h1>
+           <h1>Réponse à l'énigme</h1>
             <div>
                 <form [formGroup]="vieuxForm" (ngSubmit)="addResponse()">
                     <mat-form-field>
                         <mat-label>Route</mat-label>
-                        <textarea matInput placeholder="Réponse..." formControlName="name" required></textarea>
-
+                        <input matInput placeholder="Réponse..." type="text" formControlName="name" required />
                     </mat-form-field>
                     <button mat-button class="btn btn-inscription">Vérifier la route</button>
                 </form>
-            </div> -->
+            </div> 
         </mat-card-content>
 
         <mat-card-actions>
@@ -28,20 +27,23 @@
 
         </mat-card-actions>
     </mat-card>
+</div>
 
-    <!-- <mat-card class="example-card">
+<div *ngIf="!data" class="toto">
+    <mat-card class="example-card">
         <mat-card-content style="text-align: center;">
-            <p><small>{{ data.body.descripton }}</small></p>
-            <h1>Afin de continuer l'aventure tu dois résoudre mon énigme :</h1>
+            <h1>ATTENTION</h1>
+            <p>
+                Il vous faut une clé pour rentrer. Mettre la clé dans la balise "x-auth-token"
+            </p>
 
             <p>
-                {{data.body.question}}
+                Inscrivez-vous d'abord avant d'accéder à ce lieu
             </p>
         </mat-card-content>
         <mat-card-actions>
-            <button mat-button class="btn btn-inscription" routerLink="/accueil-second-etage">Retour à l'entrée du 2ème
-                étage</button>
+            <button mat-button class="btn btn-inscription" routerLink="/accueil-second-etage">Retour à l'entrée de l'étage</button>
 
         </mat-card-actions>
-    </mat-card> -->
+    </mat-card>
 </div>

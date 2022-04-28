@@ -22,18 +22,12 @@ mat-card {
         flex-direction: column;
     }
 }
-.formRoute{
-    display: flex;
-    flex-direction: column;
-}
 
 .toto {
     margin: 0;
     display: flex;
     justify-content: center;
     height: 100vh;
-    background-repeat: no-repeat;
-    background-size: auto;
-    background-image: url("/assets/background_home.png");
+    background-image: url("/assets/stairs.png");
 
 }

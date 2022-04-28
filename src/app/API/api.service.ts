@@ -60,6 +60,11 @@ export class ApiService {
     return this.http.get<any>(`${this.apiBook}/escalier`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
 
+  getEscalier3(token: any) {
+    //@ts-ignore
+    return this.http.get<any>(`${this.apiBook}:8000/escalier`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
+  }
+
   getCoffre(token: any) {
 
     //@ts-ignore
@@ -130,13 +135,13 @@ export class ApiService {
     //@ts-ignore
     return this.http.get<any>(`${this.apiBook}:8000/vieux`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
   }
-  postVieuxTresor2Etage(reponse: any) {
+  postVieuxTresor2Etage(reponse: any, token: any) {
     //@ts-ignore
-    return this.http.post<any>(`${this.apiBook}:8000/vieux`, reponse, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.post<any>(`${this.apiBook}:8000/vieux`, reponse, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
-  getAccueil3Etage() {
+  getAccueil3Etage(token: any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:7259/`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:7259/`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
   }
   // getInscription3Etage() {
   //   //@ts-ignore
@@ -154,17 +159,17 @@ export class ApiService {
     //@ts-ignore
     return this.http.get<any>(`${this.apiBook}:7259/inscription`, { headers: headerInscription, responseType: "text", observe: 'response' });
   }
-  getDragon3Etage() {
+  getDragon3Etage(token:any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:7259/dragon`), { headers: this.myheader, responseType: "text", observe: 'response' };
+    return this.http.get<any>(`${this.apiBook}:7259/dragon`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
-  deleteDragon3Etage() {
+  deleteDragon3Etage(token:any) {
     //@ts-ignore
-    return this.http.delete<any>(`${this.apiBook}:7259/dragon`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.delete<any>(`${this.apiBook}:7259/dragon`, { headers: this.getToken(token), responseType: "text", observe: 'response' });
   }
-  getReset3Etage() {
+  getReset3Etage(token:any) {
     //@ts-ignore
-    return this.http.get<any>(`${this.apiBook}:7259/reset`, { headers: this.myheader, responseType: "text", observe: 'response' });
+    return this.http.get<any>(`${this.apiBook}:7259/reset`, { headers: this.getToken(token), responseType: "json", observe: 'response' });
   }
 
 
