@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../API/api.service';
+import { NotificationService } from '../API/notification.service';
 
 @Component({
   selector: 'app-couloir',
@@ -18,7 +19,7 @@ export class CouloirComponent implements OnInit {
 
   couloir1Tresor: any;
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private notify: NotificationService, private apiService: ApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
     this.couloir = this.apiService.getCouloir2etage(localStorage.getItem('Authorization')).subscribe(data => {
@@ -33,10 +34,12 @@ export class CouloirComponent implements OnInit {
       this.apiService.getTresorCouloir2Etage(localStorage.getItem('Authorization')).subscribe(data => {
         //@ts-ignore
         this.couloir1Tresor = data.body;
-        alert(this.couloir1Tresor);
+        this.notify.success(this.couloir1Tresor);
+
       })
-    }else{
-      alert("Il n'y a rien ici")
+    } else {
+      this.notify.error('Il n\'y a rien ici');
+
     }
   }
 

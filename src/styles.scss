@@ -5,5 +5,38 @@ body {
     margin: 0;
     padding: 0;
 }
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+
+html,
+body {
+    height: 100%;
+}
+
+body {
+    margin: 0;
+    font-family: Roboto, "Helvetica Neue", sans-serif;
+}
+
+.snackBarError {
+    color: #ffffff !important;
+    background-color: #b82015 !important;
+    -webkit-box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, 0.56);
+    box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, 0.56);
+}
+
+.snackBarWarning {
+    color: #ffffff !important;
+    background-color: #ff8100 !important;
+    -webkit-box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, 0.56);
+    box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, 0.56);
+}
+
+.snackBarSuccess {
+    color: #ffffff !important;
+    background-color: #2a8b3a !important;
+    -webkit-box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, 0.56);
+    box-shadow: 5px 10px 15px 5px rgba(0, 0, 0, 0.56);
+}
+
+.mat-simple-snackbar-action {
+    color: #ffffff !important;
+}

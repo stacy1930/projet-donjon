@@ -3,6 +3,7 @@ import { FormBuilder, Validators } from '@angular/forms';
 import { MatDialog, MatDialogConfig } from '@angular/material/dialog';
 import { Observable, tap } from 'rxjs';
 import { ApiService } from '../API/api.service';
+import { NotificationService } from '../API/notification.service';
 import { InscriptionComponent } from '../inscription/inscription.component';
 import { ResetRdcComponent } from '../reset-rdc/reset-rdc.component';
 
@@ -24,7 +25,7 @@ export class HomeComponent implements OnInit {
   routeForm = this.formBuilder.group({
     name: ['', Validators.required],
   });
-  constructor(private apiService: ApiService, public dialog: MatDialog, private formBuilder: FormBuilder) { }
+  constructor(private notify: NotificationService, private apiService: ApiService, public dialog: MatDialog, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -66,25 +67,27 @@ export class HomeComponent implements OnInit {
 
   public routeTresor: any;
   createRoute() {
-    if(localStorage.getItem('Authorization')){
-    if (this.routeForm.value.name === '/tresor') {
-      this.apiService.getRouteCache(localStorage.getItem('Authorization')).subscribe(data => {
-        //@ts-ignore
-        this.routeTresor = data.body;
-        alert(this.routeTresor);
-      })
-    }
-    if (this.routeForm.value.name === '/36') {
-      this.apiService.getRoute36(localStorage.getItem('Authorization')).subscribe(data => {
-        //@ts-ignore
-        this.routeTresor = data.body;
-        alert(this.routeTresor);
-      })
-    }
-    if(this.routeForm.value.name != '/36' && this.routeForm.value.name != '/tresor'){
-      alert("Il n'y a rien ici");
-    }}else{
-      alert(`Il vous faut une clé pour rentrer. Mettre la clé dans la balise "x-auth-token"`);
+    if (localStorage.getItem('Authorization')) {
+      if (this.routeForm.value.name === '/tresor') {
+        this.apiService.getRouteCache(localStorage.getItem('Authorization')).subscribe(data => {
+          //@ts-ignore
+          this.routeTresor = data.body;
+          this.notify.success(this.routeTresor);
+        })
+      }
+      if (this.routeForm.value.name === '/36') {
+        this.apiService.getRoute36(localStorage.getItem('Authorization')).subscribe(data => {
+          //@ts-ignore
+          this.routeTresor = data.body;
+          this.notify.success(this.routeTresor);
+        })
+      }
+      if (this.routeForm.value.name != '/36' && this.routeForm.value.name != '/tresor') {
+        this.notify.error('Il n\'y a rien ici');
+
+      }
+    } else {
+      this.notify.error(`Il vous faut une clé pour rentrer. Mettre la clé dans la balise "x-auth-token"`);
     }
   }
 

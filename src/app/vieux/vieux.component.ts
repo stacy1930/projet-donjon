@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { FormBuilder, Validators } from '@angular/forms';
 import { ApiService } from '../API/api.service';
+import { NotificationService } from '../API/notification.service';
 
 @Component({
   selector: 'app-vieux',
@@ -18,7 +19,7 @@ export class VieuxComponent implements OnInit {
 
   public routeTresor: any;
 
-  constructor(private apiService: ApiService, private formBuilder: FormBuilder) { }
+  constructor(private notify: NotificationService, private apiService: ApiService, private formBuilder: FormBuilder) { }
 
   ngOnInit(): void {
 
@@ -36,10 +37,12 @@ export class VieuxComponent implements OnInit {
         //@ts-ignore
         this.routeTresor = data.body;
         console.log(this.routeTresor);
-        alert(this.routeTresor);
+        this.notify.success(this.routeTresor);
+
       })
-    }else{
-      alert("Faux !!! Essaie encore");
+    } else {
+      this.notify.error("Faux !!! Essaie encore");
+
     }
     // }
     // else {

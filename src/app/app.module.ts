@@ -27,6 +27,8 @@ import { EtageTroisAcceuilComponent } from './etage-trois-acceuil/etage-trois-ac
 import { EscalierSecondComponent } from './escalier-second/escalier-second.component';
 import { DragonComponent } from './dragon/dragon.component';
 
+import { MatSnackBarModule } from '@angular/material/snack-bar';
+
 
 @NgModule({
   declarations: [
@@ -57,7 +59,8 @@ import { DragonComponent } from './dragon/dragon.component';
     MatFormFieldModule,
     FormsModule,
     ReactiveFormsModule,
-    MatInputModule
+    MatInputModule,
+    MatSnackBarModule
   ],
   providers: [],
   bootstrap: [AppComponent]
